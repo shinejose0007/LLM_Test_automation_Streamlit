@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "privacy": {
+    "enable_external_llm_default": false,
+    "data_minimization_default": true,
+    "redact_pii_before_llm": true,
+    "max_llm_input_chars": 1200
+  },
+  "rag": {
+    "max_context_chars": 2000,
+    "cite_only_default": false,
+    "trusted_doc_required_default": false,
+    "blocked_instruction_regex": [
+      "(?i)ignore\\s+(all|any)\\s+(previous|prior)\\s+instructions",
+      "(?i)system\\s+prompt",
+      "(?i)developer\\s+message",
+      "(?i)reveal\\s+(your|the)\\s+(instructions|prompt|policy)",
+      "(?i)jailbreak",
+      "(?i)bypass\\s+(safety|policy|filters?)",
+      "(?i)call\\s+tool\\s+",
+      "(?i)exfiltrat"
+    ]
+  },
+  "tools": {
+    "kb_search": {
+      "risk": "low",
+      "requires_approval": false
+    },
+    "summarize_text": {
+      "risk": "low",
+      "requires_approval": false
+    },
+    "create_todo": {
+      "risk": "low",
+      "requires_approval": false
+    },
+    "list_todos": {
+      "risk": "low",
+      "requires_approval": false
+    },
+    "draft_email": {
+      "risk": "medium",
+      "requires_approval": false
+    },
+    "github_repo_search": {
+      "risk": "low",
+      "requires_approval": false
+    },
+    "webhook_post": {
+      "risk": "high",
+      "requires_approval": true
+    }
+  },
+  "webhook": {
+    "allowlist_hosts": [
+      "example.com",
+      "hooks.slack.com"
+    ]
+  },
+  "rbac": {
+    "role_permissions": {
+      "Admin": [
+        "*"
+      ],
+      "Researcher": [
+        "kb_search",
+        "summarize_text",
+        "create_todo",
+        "list_todos",
+        "draft_email",
+        "github_repo_search"
+      ],
+      "Viewer": [
+        "kb_search",
+        "summarize_text",
+        "list_todos",
+        "github_repo_search"
+      ]
+    }
+  }
+}
