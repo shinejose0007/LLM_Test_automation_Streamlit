@@ -56,5 +56,4 @@ streamlit run app.py
 This repository is provided as sample educational content by Shine Jose..... Use and modify freely.....
 - The **first registered user** becomes **Admin** automatically.
 
-### Patch v2_3
-Fixed external LLM planning base URL normalization (normalize_base_url NameError).
+
